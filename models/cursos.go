@@ -5,8 +5,8 @@ import (
 )
 
 type Cursos struct {
-    gorm.Model
-	Name 		string
-	Period	 	string
-	State		string
+	gorm.Model
+	Name   string
+	Period string
+	State  string
 }

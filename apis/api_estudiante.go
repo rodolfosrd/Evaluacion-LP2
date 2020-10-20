@@ -1,8 +1,9 @@
 package apis
 
 import (
+	"crudrod/models"
 	"net/http"
-	"crudjos/models"
+
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"
 )
@@ -32,12 +33,12 @@ func EstudianteIndex(c *gin.Context) {
 func EstudiantePost(c *gin.Context) {
 	db, _ := c.Get("db")
 	conn := db.(gorm.DB)
-	est := models.Estudiante{Name:		c.PostForm("name"), 
-							Paternal: 	c.PostForm("paternal"), 
-							Maternal: 	c.PostForm("maternal"),
-							Age:		c.PostForm("age"),
-							State:		c.PostForm("state"),
-		}
+	est := models.Estudiante{Name: c.PostForm("name"),
+		Paternal: c.PostForm("paternal"),
+		Maternal: c.PostForm("maternal"),
+		Age:      c.PostForm("age"),
+		State:    c.PostForm("state"),
+	}
 	conn.Create(&est)
 	c.JSON(http.StatusOK, &est)
 }
@@ -60,7 +61,7 @@ func EstudiantePut(c *gin.Context) {
 	c.JSON(http.StatusOK, &est)
 }
 
-func EstudianteDelete(c *gin.Context){
+func EstudianteDelete(c *gin.Context) {
 	db, _ := c.Get("db")
 	conn := db.(gorm.DB)
 	id := c.Param("id")

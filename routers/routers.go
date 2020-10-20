@@ -1,18 +1,19 @@
 package routers
 
 import (
-	"crudjos/apis"
+	"crudrod/apis"
+	"crudrod/models"
+
 	"github.com/gin-gonic/gin"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
-	"crudjos/models"
 )
 
 func SetupRouter() *gin.Engine {
 
 	conn, err := connectDB()
 	if err != nil {
-		panic("failed to connect database"+err.Error())
+		panic("failed to connect database" + err.Error())
 	}
 
 	r := gin.Default()
@@ -20,18 +21,18 @@ func SetupRouter() *gin.Engine {
 
 	stu := r.Group("/stu")
 	{
-		stu.GET("/students/:id", 	apis.EstudianteGetId)
-		stu.GET("/students/", 		apis.EstudianteIndex)
-		stu.POST("/students/", 		apis.EstudiantePost)
-		stu.PUT("/students/:id", 	apis.EstudiantePut)
+		stu.GET("/students/:id", apis.EstudianteGetId)
+		stu.GET("/students/", apis.EstudianteIndex)
+		stu.POST("/students/", apis.EstudiantePost)
+		stu.PUT("/students/:id", apis.EstudiantePut)
 		stu.DELETE("/students/:id", apis.EstudianteDelete)
 	}
 	cour := r.Group("/cour")
 	{
-		cour.GET("/courses/:id", 	apis.CursosGetId)
-		cour.GET("/courses/", 		apis.CursosIndex)
-		cour.POST("/courses/", 		apis.CursosPost)
-		cour.PUT("/courses/:id", 	apis.CursosPut)
+		cour.GET("/courses/:id", apis.CursosGetId)
+		cour.GET("/courses/", apis.CursosIndex)
+		cour.POST("/courses/", apis.CursosPost)
+		cour.PUT("/courses/:id", apis.CursosPut)
 		cour.DELETE("/courses/:id", apis.CursosDelete)
 	}
 
@@ -47,7 +48,7 @@ func connectDB() (c *gorm.DB, err error) {
 	conn.AutoMigrate(&models.Estudiante{})
 
 	if err != nil {
-		panic("failed to connect database"+err.Error())
+		panic("failed to connect database" + err.Error())
 	}
 	return conn, err
 }

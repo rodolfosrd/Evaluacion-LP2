@@ -1,7 +1,7 @@
 package main
 
 import (
-	"crudjos/routers"
+	"crudrod/routers"
 )
 
 func main() {

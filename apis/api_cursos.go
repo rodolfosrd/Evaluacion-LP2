@@ -1,8 +1,9 @@
 package apis
 
 import (
+	"crudrod/models"
 	"net/http"
-	"crudjos/models"
+
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"
 )
@@ -54,7 +55,7 @@ func CursosPut(c *gin.Context) {
 	c.JSON(http.StatusOK, &cur)
 }
 
-func CursosDelete(c *gin.Context){
+func CursosDelete(c *gin.Context) {
 	db, _ := c.Get("db")
 	conn := db.(gorm.DB)
 	id := c.Param("id")

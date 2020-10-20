@@ -1,4 +1,4 @@
-module crudjos
+module crudrod
 
 go 1.15
 
