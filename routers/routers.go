@@ -20,10 +20,10 @@ func SetupRouter() *gin.Engine {
 
 	stu := r.Group("/stu")
 	{
-		stu.GET("/students/:id", apis.EstudianteGetId)
-		stu.GET("/students/", apis.EstudianteIndex)
-		stu.POST("/students/", apis.EstudiantePost)
-		stu.PUT("/students/:id", apis.EstudiantePut)
+		stu.GET("/students/:id", 	apis.EstudianteGetId)
+		stu.GET("/students/", 		apis.EstudianteIndex)
+		stu.POST("/students/", 		apis.EstudiantePost)
+		stu.PUT("/students/:id", 	apis.EstudiantePut)
 		stu.DELETE("/students/:id", apis.EstudianteDelete)
 	}
 	cour := r.Group("/cour")

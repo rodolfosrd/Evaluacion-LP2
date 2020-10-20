@@ -33,11 +33,11 @@ func EstudiantePost(c *gin.Context) {
 	db, _ := c.Get("db")
 	conn := db.(gorm.DB)
 	est := models.Estudiante{Name:		c.PostForm("name"), 
-						Paternal: 	c.PostForm("paternal"), 
-						Maternal: 	c.PostForm("maternal"),
-						Age:		c.PostForm("age"),
-						State:		c.PostForm("state"),
-					}
+							Paternal: 	c.PostForm("paternal"), 
+							Maternal: 	c.PostForm("maternal"),
+							Age:		c.PostForm("age"),
+							State:		c.PostForm("state"),
+		}
 	conn.Create(&est)
 	c.JSON(http.StatusOK, &est)
 }
